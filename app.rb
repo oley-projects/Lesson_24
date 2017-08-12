@@ -40,6 +40,22 @@ post '/visit' do
 	@barber = params[:barber]
 	@color = params[:color]
 
+	if @username == ''
+		@error = 'Enter Name'
+	end
+
+	if @phone == ''
+		@error = 'Enter Phone'
+	end
+
+	if @datetime == ''
+		@error = 'Incorrect date and time'
+	end
+
+	if @error != ''
+		return erb :visit
+	end
+
 	@title = 'Thank you!'
 	@message = "Dear #{@username}, we'll be waiting for you at #{@datetime}. Color: #{@color}"
 
